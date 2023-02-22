@@ -1,0 +1,107 @@
+:root {
+  --carrot-orange: #f9a03fff;
+  --light-yellow: #f8fcdaff;
+  --prussian-blue: #253d5bff;
+  --delft-blue: #3d405bff;
+  --rose-pompadour: #dc758fff;
+}
+body {
+  margin: 0;
+}
+
+.container {
+  display: grid;
+  margin: 0;
+
+  grid-template-areas:
+    "header header header"
+    "nav content side"
+    "footer footer footer";
+
+  grid-template-columns: 200px 1fr 200px;
+  grid-template-rows: auto 1fr auto;
+  grid-gap: 10px;
+
+  height: 100vh;
+}
+header {
+  grid-area: header;
+  background-color: var(--prussian-blue);
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  align-items: center;
+}
+header span {
+  position: relative;
+  font-size: larger;
+  color: white;
+  align-self: center;
+}
+.header_buttons {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+  height: 100%;
+}
+.header_buttons button {
+  background-color: white;
+  width: 30%;
+  border: var(--carrot-orange) 3px solid;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  font-size: clamp(medium, large, larger);
+}
+nav {
+  grid-area: nav;
+  margin-left: 0.5rem;
+  background-color: var(--carrot-orange);
+}
+
+main {
+  grid-area: content;
+  background-color: var(--light-yellow);
+}
+
+aside {
+  grid-area: side;
+  margin-right: 0.5rem;
+  background-color: var(--delft-blue);
+}
+
+footer {
+  grid-area: footer;
+  background-color: var(--prussian-blue);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+footer span {
+  font-size: large;
+  margin: 10px;
+  font-family: "Courier New", Courier, monospace;
+}
+@media (max-width: 768px) {
+  .container {
+    grid-template-areas:
+      "header"
+      "nav"
+      "content"
+      "side"
+      "footer";
+
+    grid-template-columns: 1fr;
+    grid-template-rows:
+      auto /* Header */
+      minmax(75px, auto) /* Nav */
+      1fr /* Content */
+      minmax(75px, auto) /* Sidebar */
+      auto; /* Footer */
+  }
+
+  nav,
+  aside {
+    margin: 0;
+  }
+}
